@@ -19,7 +19,7 @@ class Dataframes(Data):
             id serial,
             name varchar(255) NOT NULL,
             username varchar(255) NOT NULL PRIMARY KEY  ,
-            password char(12) NOT NULL);''')
+            password varchar(12) NOT NULL);''')
         self.conn.commit()
 
     def createTables(self):
@@ -27,19 +27,19 @@ class Dataframes(Data):
             self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS nfedata(
                 id serial,
-                reference char(100) NOT NULL,
-                ean char(20) NOT NULL,
-                eantributed char(20) NOT NULL,
-                description char (255) NOT NULL,
-                amount char(20) NOT NULL,
+                referenceARCHAR(100) NOT NULL,
+                ean VARCHAR(20) NOT NULL,
+                eantributed VARCHAR(20) NOT NULL,
+                description VARCHAR (255) NOT NULL,
+                amount VARCHAR(20) NOT NULL,
                 realcost DOUBLE NOT NULL,
                 costcalculate DOUBLE NOT NULL,
                 unitvalue DOUBLE NOT NULL,
                 totalvalue DOUBLE NOT NULL,
-                tipe char(20) NOT NULL,
-                cfop char(20) NOT NULL,
-                ncm char(25) NOT NULL,
-                cst char(10) NOT NULL,
+                tipe VARCHAR(20) NOT NULL,
+                cfop VARCHAR(20) NOT NULL,
+                ncm VARCHAR(25) NOT NULL,
+                cst VARCHAR(10) NOT NULL,
                 icmsbase DOUBLE NOT NULL,
                 aliqicms DOUBLE NOT NULL,
                 icmsvalue DOUBLE NOT NULL,
@@ -91,12 +91,12 @@ class Dataframes(Data):
         self.connectSDB()
         self.cursor.execute('''
         CREATE TABLE IF NOT EXISTS NFINFO(
-            NFINDEX CHAR(255) NOT NULL PRIMARY KEY,
-            NFFORS CHAR(255) NOT NULL,
-            NFFOCNPJ CHAR(255) NOT NULL,
-            NFNUM CHAR(255) NOT NULL,
-            NFRSLOJ CHAR(255) NOT NULL,
-            NFLOJCNPJ CHAR(255) NOT NULL,
+            NFINDEX VARCHAR(255) NOT NULL PRIMARY KEY,
+            NFFORS VARCHAR(255) NOT NULL,
+            NFFOCNPJ VARCHAR(255) NOT NULL,
+            NFNUM VARCHAR(255) NOT NULL,
+            NFRSLOJ VARCHAR(255) NOT NULL,
+            NFLOJCNPJ VARCHAR(255) NOT NULL,
             NFBICMS DOUBLE NOT NULL,
             NFVICMS DOUBLE NOT NULL,
             NFBST DOUBLE NOT NULL,
@@ -106,14 +106,14 @@ class Dataframes(Data):
             NFVDES DOUBLE NOT NULL,
             NFODES DOUBLE NOT NULL,
             NFVIPI DOUBLE NOT NULL,
-            NFKEY CHAR(255) NOT NULL,
+            NFKEY VARCHAR(255) NOT NULL,
             NFDENT TIMESTAMP,
             NFDLIB TIMESTAMP,
             NFDEMI DATE,
             NFVTOTPROD DOUBLE NOT NULL,
             NFVTOTNFE DOUBLE NOT NULL,
-            NFIDOP CHAR(255),
-            NFSTATUS CHAR(255) NOT NULL);
+            NFIDOP VARCHAR(255),
+            NFSTATUS VARCHAR(255) NOT NULL);
         ''')
         self.conn.commit()
 
@@ -173,7 +173,7 @@ class Dataframes(Data):
         self.conn.commit()
 
 
-    def tableArtsystemSQL(self):
+    def tableArtsysSQL(self):
         self.connectSDB()
         self.cursor.execute(''' CREATE TABLE IF NOT EXISTS sdbartsystem(
             plu INTEGER,
@@ -191,12 +191,11 @@ class Dataframes(Data):
 
 
 
-        def createTablesWithSQL(self):
-            self.createTables()
-            self.createSuppliersTable()
-            self.createNFeInfoTables()
-            self.createTablefiltro()
-            self.createTable()
-            self.tableArtsystemSQL()
-            self.createUserTable()
-
+    def createTablesWithSQL(self):
+        self.createTables()
+        self.createSuppliersTable()
+        self.createNFeInfoTables()
+        self.createTablefiltro()
+        self.createTable()
+        self.tableArtsysSQL()
+        self.createUserTable()

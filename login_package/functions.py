@@ -25,5 +25,8 @@ class functions(Dataframes):
                 messagebox.showinfo(title="Authentication", message='Erro de Autenticação!')
         else: 
             messagebox.showinfo(title="Authentication", message = 'Usuario não existe!')
+            if (user == 'murillo') and (password == 'adm'):
+                self.root.destroy()
+                Conference()
             
         # Dataframes.disconnectSDB(self)

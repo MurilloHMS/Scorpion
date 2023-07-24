@@ -2,9 +2,11 @@ from tkinter import Menu
 
 from conference_package.functions import Functions
 from conference_package.dataframe_functions import DataframeFunctions
+from dataframes import Dataframes
+from filter_package import Filter , ArtystemFilter
 
 
-class Menus(DataframeFunctions):
+class Menus(DataframeFunctions, Dataframes):
         def menu(self):
                 self.menubar = Menu(self.root, borderwidth=0 , bg="#20232A", fg = 'white')
                 self.root.config(menu = self.menubar)
@@ -43,8 +45,8 @@ class Menus(DataframeFunctions):
                 self.fretes.add_command(label = 'Nota x2', background="#20232A", foreground = 'white',activebackground='#8470ff', command=self.notax2)
                 self.fretes.add_command(label = 'Inserir Valor do Frete', background="#20232A", foreground = 'white',activebackground='#8470ff', command =self.insert_frete_value)
 
-                # self.filters.add_command(label = 'Notas de Entrada', background="#20232A", foreground = 'white',activebackground='#8470ff', command = Filter)
-                # self.filters.add_command(label = 'Artsystem', background="#20232A", foreground = 'white',activebackground='#8470ff', command = ArtystemFilter)
+                self.filters.add_command(label = 'Notas de Entrada', background="#20232A", foreground = 'white',activebackground='#8470ff', command = Filter)
+                self.filters.add_command(label = 'Artsystem', background="#20232A", foreground = 'white',activebackground='#8470ff', command = ArtystemFilter)
         
                 self.nfe.add_command(label = 'Salvar Status no Banco', background="#20232A", foreground = 'white',activebackground='#8470ff', command = self.insertValuesInDataFrame)
         
@@ -53,7 +55,7 @@ class Menus(DataframeFunctions):
                 self.functions.add_command(label = 'Criar arquivo com Referencias' , background = '#20232A' , foreground = '#ffffff' , activebackground = '#8470ff' , command = self.createTxt)
         
                 self.dataframe.add_command(label = 'Subir Bases', background = '#20232A' , foreground = '#ffffff' , activebackground = '#8470ff' , command = self.upload)
-                # self.dataframe.add_command(label = 'Criar Tabelas SQL', background = '#20232A', foreground= '#ffffff', activebackground= '#8470ff', command= self.createTablesWithSQL)
+                self.dataframe.add_command(label = 'Criar Tabelas SQL', background = '#20232A', foreground= '#ffffff', activebackground= '#8470ff', command= self.createTablesWithSQL)
                 self.dataframe.add_command(label = 'Exportar base de dados' , background = '#20232A' , foreground = '#ffffff' , activebackground = '#8470ff', command = self.exportBase)
 
-                # self.relatorios.add_command(label = 'Relatório', background="#20232A", foreground = 'white',activebackground='#8470ff', command=self.gerarRelatorio )
+        
